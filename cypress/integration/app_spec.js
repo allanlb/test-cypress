@@ -1,5 +1,10 @@
 describe('Sign Up', () => {
   it('Adds person to course', () => {
+    // cy.intercept({
+    //   method: 'POST',
+    //   url: '/signUp',
+    // }).as('signUp')
+
     cy.visit('/')
 
     cy.get('input[name="name"]')
@@ -22,6 +27,7 @@ describe('Sign Up', () => {
     cy.get('input[type="submit"]')
       .click()
 
+    // cy.wait('@signUp')
     cy.get('li', { timeout: 4500 })
       .should('contain', 'Some Name - some@email.com - core - git-it')
   })
